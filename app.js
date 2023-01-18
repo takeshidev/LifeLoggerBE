@@ -1,14 +1,12 @@
 const port = 3000;
 const express = require("express");
-const bodyParser = require("body-parser");
-const db = require("./utils/database");
 const app = express();
 
+// Get routes
 const diagnosticsRoutes = require("./routes/diagnostics.routes");
 const feedRoutes = require("./routes/feed.routes");
 
-app.use(bodyParser.urlencoded({ extended: false }));
-
+// Use routes
 app.use("/", diagnosticsRoutes);
 app.use("/feed", feedRoutes);
 

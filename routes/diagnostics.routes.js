@@ -4,7 +4,7 @@ const diagnosticsController = require("../controllers/diagnostics.controller");
 
 const router = express.Router();
 
-// GET /feed
+// GET '/'
 router.get("/", diagnosticsController.sanityTest);
 
 module.exports = router;

@@ -9,13 +9,15 @@ module.exports = class Entry {
     this.updated_at = updated_at;
   }
 
-  save() {}
-
-  static deleteById(id) {}
-  static async fetchAll() {
+  static fetchAll() {
     return db.execute("SELECT * FROM lifeLogger.entries");
   }
+
   static getById(id) {
     return db.execute("SELECT * FROM lifeLogger.entries WHERE id = ?", [id]);
   }
+
+  static saveSinglePost() {}
+
+  static deleteById(id) {}
 };
