@@ -1,23 +1,24 @@
-const db = require("../utils/database");
-module.exports = class Entry {
-  constructor(id, content, mood, user, created_at, updated_at) {
-    this.id = id;
-    this.content = content;
-    this.mood = mood;
-    this.user = user;
-    this.created_at = created_at;
-    this.updated_at = updated_at;
-  }
+const Sequelize = require("sequelize");
 
-  static fetchAll() {
-    return db.execute("SELECT * FROM lifeLogger.entries");
-  }
+const sequelize = require("../utils/database");
 
-  static getById(id) {
-    return db.execute("SELECT * FROM lifeLogger.entries WHERE id = ?", [id]);
-  }
+const Entry = sequelize.define("Entry", {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    allowNull: false,
+    primaryKey: true,
+  },
+  content: {
+    type: Sequelize.STRING(1000),
+    allowNull: false,
+  },
+  mood: {
+    type: Sequelize.INTEGER,
+  },
+  user: {
+    type: Sequelize.INTEGER,
+  },
+});
 
-  static saveSinglePost() {}
-
-  static deleteById(id) {}
-};
+module.exports = Entry;

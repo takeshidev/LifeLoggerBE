@@ -1,11 +1,10 @@
-const mysql = require("mysql2");
+const Sequelize = require("sequelize");
 
 // This should be on a Secret Manager and not be hardcoded
-const pool = mysql.createPool({
+const sequelize = new Sequelize("lifeLogger", "lifeloggeradmin", "321Admin.", {
   host: "localhost",
-  user: "lifeloggeradmin",
-  database: "lifeLogger",
-  password: "321Admin.",
+  port: 3306,
+  dialect: "mysql",
 });
 
-module.exports = pool.promise();
+module.exports = sequelize;
