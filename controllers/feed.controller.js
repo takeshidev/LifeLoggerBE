@@ -42,3 +42,28 @@ exports.postPost = (req, res) => {
     });
   console.log("POST /feed/");
 };
+
+exports.putPostById = async (req, res, next) => {
+  const id = req.params.id;
+  const newContent = req.body.content;
+  const newMood = req.body.mood;
+
+  Entry.findByPk(id)
+    .then((entry) => {
+      if (newContent) {
+        entry.content = newContent;
+      }
+      if (newMood) {
+        entry.mood = newMood;
+      }
+      return entry.save();
+    })
+    .then((result) => {
+      res.status(201).json(result);
+      console.log(201);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  console.log("GET /feed/" + id);
+};
