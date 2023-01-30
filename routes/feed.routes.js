@@ -13,4 +13,6 @@ router.put("/:id", feedController.putPostById);
 
 router.post("/", feedController.postPost);
 
+router.delete("/:id", feedController.deletePostById);
+
 module.exports = router;

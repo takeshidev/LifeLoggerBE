@@ -65,5 +65,26 @@ exports.putPostById = async (req, res, next) => {
     .catch((err) => {
       console.error(err);
     });
-  console.log("GET /feed/" + id);
+  console.log("PUT /feed/" + id);
+};
+
+exports.deletePostById = async (req, res, next) => {
+  const id = req.params.id;
+
+  Entry.findByPk(id)
+    .then((entry) => {
+      if (!entry) {
+        res.status(404).json({ error: "Entry was not found" });
+        console.log(404, "DELETE /feed/" + id);
+        throw new Error("Entry was not found");
+      }
+      return entry.destroy();
+    })
+    .then((result) => {
+      res.status(200).json(result);
+      console.log(200, "DELETE /feed/" + id);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 };
