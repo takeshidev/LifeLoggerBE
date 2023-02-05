@@ -1,0 +1,32 @@
+[
+  {
+    "email": "FloydRaynor@life-logger.test",
+    "password": "Test@123",
+    "role": "admin",
+    "name": "Floyd Raynor"
+  },
+  {
+    "email": "BrittanyChristiansen@life-logger.test",
+    "password": "Test@123",
+    "role": "admin",
+    "name": "Brittany Christiansen"
+  },
+  {
+    "email": "AdolphusShields@life-logger.test",
+    "password": "Test@123",
+    "role": "admin",
+    "name": "Adolphus Shields"
+  },
+  {
+    "email": "PansyHeidenreich@life-logger.test",
+    "password": "Test@123",
+    "role": "admin",
+    "name": "Pansy Heidenreich"
+  },
+  {
+    "email": "ReyMorar@life-logger.test",
+    "password": "Test@123",
+    "role": "admin",
+    "name": "Rey Morar"
+  }
+]

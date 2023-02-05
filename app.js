@@ -4,13 +4,12 @@ const bodyParser = require("body-parser");
 const sequelize = require("./utils/database");
 const initialize = require("./utils/initialize");
 const app = express();
+app.use(bodyParser.json());
 
 // Get routes
 const diagnosticsRoutes = require("./routes/diagnostics.routes");
 const feedRoutes = require("./routes/feed.routes");
 const userRoutes = require("./routes/user.routes");
-
-app.use(bodyParser.json());
 
 // Use routes
 app.use("/", diagnosticsRoutes);
