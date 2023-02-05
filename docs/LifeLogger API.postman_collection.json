@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "4ad45f56-fd24-4fca-ae08-5cf9b30c1c4b",
+		"name": "LifeLogger API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12223620"
+	},
+	"item": [
+		{
+			"name": "Entries",
+			"item": [
+				{
+					"name": "getAllEntries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{port}}/feed/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"feed",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEntryById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{port}}/feed/{{postId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"feed",
+								"{{postId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePost",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{port}}/feed/{{postId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"feed",
+								"{{postId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postPost",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = JSON.parse(responseBody);",
+									"",
+									"pm.environment.set(\"postId\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"{{$randomLoremParagraph}}\",\n    \"mood\": {{randomMood}},\n    \"user\": {{randomUser}}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{port}}/feed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"feed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putPost",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"{{$randomLoremParagraph}}\",\n    \"mood\": {{randomMood}}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{port}}/feed/{{postId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"feed",
+								"{{postId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"randomMood\", Math.floor(Math.random() * 5) + 1);",
+							"pm.environment.set(\"randomUser\", Math.floor(Math.random() * (99999 - 10000 + 1) + 10000));"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": []
+		}
+	]
+}
